@@ -1,15 +1,11 @@
 #!groovy
 
 pipeline {
+  environment {
+    dockerImage = ''
+  }
   agent any
   stages {
-    stage ('add docker') {
-      agent {
-        docker {
-          image node:lts-alpine
-        }
-      }
-    }
     stage ("Docker Build"){
       agent any
       steps {
