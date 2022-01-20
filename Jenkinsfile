@@ -1,8 +1,12 @@
 node('docker') {
-    stage 'Checkout'
+  stages {
+    stage ('Checkout') {
         checkout scm
-    stage 'Build & UnitTest'
+    }
+    stage ('Build & UnitTest') {
         sh "docker build -t todofront -f Dockerfile ."
+    }
+  }
 }
 
 // pipeline {
