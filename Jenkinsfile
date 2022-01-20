@@ -1,11 +1,21 @@
 #!groovy
 
 pipeline {
+  agent {
+    docker {
+      image 'node:lts-alpine'
+    }
+  }
   environment {
+    HOME = '.'
     dockerImage = ''
   }
-  agent any
   stages {
+    stage ('Clone Git') {
+      steps {
+        git 'https://github.com/Defender0345/Todo-front.git'
+      }
+    }
     stage ("Docker Build"){
       agent any
       steps {
