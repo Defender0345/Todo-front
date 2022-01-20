@@ -1,3 +1,4 @@
+#!groovy
 
 pipeline {
   agent any
@@ -9,7 +10,7 @@ pipeline {
         }
       }
     }
-    stage ("buildimage"){
+    stage ("Docker Build"){
       agent any
       steps {
         sh 'docker build -t todofront:1.0'
